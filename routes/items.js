@@ -7,68 +7,37 @@ const Item = require('../models/Item');
 router.get('/', async (req, res) => {
     try {
         const items = await Item.find();
-        res.json(items);
+        res.render('index', { items: items });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
+// Get form for creating a new item
+router.get('/new', (req, res) => {
+    res.render('new');
+});
+
 // Get a single item by ID
 router.get('/:id', getItem, (req, res) => {
-    res.json(res.item);
+    res.render('item', { item: res.item });
 });
 
 // Create a new item
 router.post('/', async (req, res) => {
     const item = new Item({
-        name: req.body.name,
+        title: req.body.title,
         description: req.body.description,
         price: req.body.price,
         location: req.body.location,
-        imageUrl: req.body.imageUrl
+        image: req.body.image
     });
 
     try {
         const newItem = await item.save();
-        res.status(201).json(newItem);
+        res.redirect(`/items/${newItem._id}`);
     } catch (err) {
         res.status(400).json({ message: err.message });
-    }
-});
-
-// Update an item by ID
-router.put('/:id', getItem, async (req, res) => {
-    if (req.body.name != null) {
-        res.item.name = req.body.name;
-    }
-    if (req.body.description != null) {
-        res.item.description = req.body.description;
-    }
-    if (req.body.price != null) {
-        res.item.price = req.body.price;
-    }
-    if (req.body.location != null) {
-        res.item.location = req.body.location;
-    }
-    if (req.body.imageUrl != null) {
-        res.item.imageUrl = req.body.imageUrl;
-    }
-
-    try {
-        const updatedItem = await res.item.save();
-        res.json(updatedItem);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
-
-// Delete an item by ID
-router.delete('/:id', getItem, async (req, res) => {
-    try {
-        await res.item.remove();
-        res.json({ message: 'Deleted Item' });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
     }
 });
 
@@ -89,5 +58,3 @@ async function getItem(req, res, next) {
 }
 
 module.exports = router;
-
-
