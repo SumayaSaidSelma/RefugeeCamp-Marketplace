@@ -3,7 +3,6 @@ const express = require('express');  // Importing the Express framework to creat
 const mongoose = require('mongoose'); //Importing Mongoose to interact with MongoDB.
 const dotenv = require('dotenv'); //Importing dotenv to manage environment variables.
 
-
 dotenv.config();
 
 const app = express();
@@ -15,6 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 // Routes
+const itemRoutes = require('./routes/items');
+app.use('/items', itemRoutes);
+
+// Root route for testing
 app.get('/', (req, res) => {
     res.send('Hello, world!');
 });
@@ -24,6 +27,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+// Start server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
