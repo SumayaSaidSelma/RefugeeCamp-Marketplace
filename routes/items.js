@@ -1,3 +1,4 @@
+// routes/items.js
 
 const express = require('express');
 const router = express.Router();
@@ -6,55 +7,57 @@ const Item = require('../models/Item');
 // Get all items
 router.get('/', async (req, res) => {
     try {
-        const items = await Item.find();
-        res.render('index', { items: items });
+        const items = await Item.find().populate('owner');
+        res.json(items);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
-// Get form for creating a new item
-router.get('/new', (req, res) => {
-    res.render('new');
-});
-
-// Get a single item by ID
-router.get('/:id', getItem, (req, res) => {
-    res.render('item', { item: res.item });
-});
-
-// Create a new item
+// Post a new item
 router.post('/', async (req, res) => {
-    const item = new Item({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        location: req.body.location,
-        image: req.body.image
-    });
-
     try {
-        const newItem = await item.save();
-        res.redirect(`/items/${newItem._id}`);
+        const { title, description, image, price, owner } = req.body;
+        const item = new Item({ title, description, image, price, owner });
+        await item.save();
+        res.status(201).json(item);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-// Middleware function to get item by ID
-async function getItem(req, res, next) {
-    let item;
+// Get a specific item
+router.get('/:id', async (req, res) => {
     try {
-        item = await Item.findById(req.params.id);
-        if (item == null) {
-            return res.status(404).json({ message: 'Cannot find item' });
-        }
+        const item = await Item.findById(req.params.id).populate('owner');
+        if (!item) return res.status(404).json({ message: 'Item not found' });
+        res.json(item);
     } catch (err) {
-        return res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
+});
 
-    res.item = item;
-    next();
-}
+// Update an item
+router.put('/:id', async (req, res) => {
+    try {
+        const { title, description, image, price, isAvailable } = req.body;
+        const item = await Item.findByIdAndUpdate(req.params.id, { title, description, image, price, isAvailable }, { new: true });
+        if (!item) return res.status(404).json({ message: 'Item not found' });
+        res.json(item);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Delete an item
+router.delete('/:id', async (req, res) => {
+    try {
+        const item = await Item.findByIdAndDelete(req.params.id);
+        if (!item) return res.status(404).json({ message: 'Item not found' });
+        res.json({ message: 'Item deleted' });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 module.exports = router;

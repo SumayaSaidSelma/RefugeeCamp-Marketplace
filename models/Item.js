@@ -1,6 +1,8 @@
 
 
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 
 const itemSchema = new mongoose.Schema({
     name: {
@@ -19,9 +21,12 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    imageUrl: {
+    image: {
         type: String,
         required: true
+    },
+    isAvailable: { 
+        type: Boolean, default: true 
     }
 });
 

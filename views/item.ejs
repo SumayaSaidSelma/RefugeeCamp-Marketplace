@@ -6,6 +6,7 @@
     <title><%= item.title %></title>
     <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
     <h1><%= item.title %></h1>
     <img src="<%= item.image %>" alt="<%= item.title %>">
@@ -13,9 +14,12 @@
     <p>Price: $<%= item.price %></p>
     <p>Location: <%= item.location %></p>
     <a href="/items/<%= item._id %>/edit">Edit</a>
+
     <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete</button>
     </form>
+    
     <a href="/">Back to Home</a>
 </body>
+
 </html>

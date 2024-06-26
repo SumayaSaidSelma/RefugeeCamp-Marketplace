@@ -1,26 +1,40 @@
 
+// Load environment variables from .envy file
+require('dotenv').config({ path: '.envy' });
+
+
+// Require necessary modules
 const express = require('express');  // Importing the Express framework to create a server.
 const mongoose = require('mongoose'); //Importing Mongoose to interact with MongoDB.
 const dotenv = require('dotenv'); //Importing dotenv to manage environment variables.
 
 const app = express();
+const userRoutes = require('./routes/users'); 
 const itemRoutes = require('./routes/items');
 
-dotenv.config();
+// Middlewares
+app.use(express.static('public')); // Serve static files from 'public' directory
+app.use(express.json()); // Parse JSON bodies for POST requests
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies for POST requests
+app.set('view engine', 'ejs'); // Set EJS as the view engine
 
-app.use(express.static('public'));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
+// Connect to MongoDB using Mongoose
+const mongoURI = process.env.MONGODBURI;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+// Define routes
+app.use('/users', userRoutes); // Route middleware for '/users' using userRoutes
+app.use('/items', itemRoutes); // Route middleware for '/items' using itemRoutes
 
-app.use('/items', itemRoutes);
+// Define port
+const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server is running on port ${process.env.PORT || 3000}`);
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
+
 
