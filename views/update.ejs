@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Item</title>
+    <link rel="stylesheet" href="/update.css">
+</head>
+
+<body>
+    <header>
+        <a href="/" class="a goback">Back to Home</a>
+        <a href="/logout" class="btn logout">Log Out</a>
+    </header>
+
+    <main class="item-page">
+        <h1>Update Item</h1>
+        <form action="/items/<%= item._id %>?_method=PUT" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<%= item.name %>" required>
+            </div>
+
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" value="<%= item.price %>" required>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required><%= item.description %></textarea>
+            </div>
+
+            <div>
+                <label for="size">Size:</label>
+                <input type="number" id="size" name="size" value="<%= item.size %>" required>
+            </div>      
+
+            <div>
+                <label for="condition">Condition:</label>
+                <input type="text" id="condition" name="condition" value="<%= item.condition %>" required>
+            </div>
+
+            <div>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" value="<%= item.location %>" required>
+            </div>
+
+            <div>
+                <label for="image">Image URL:</label>
+                <input type="url" id="image" name="image" value="<%= item.image %>" required>
+            </div>
+            
+            <button type="submit" class="btn update">Update Item</button>
+        </form>
+    </main>
+</body>
+</html>

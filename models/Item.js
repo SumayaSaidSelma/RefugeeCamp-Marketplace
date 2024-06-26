@@ -1,3 +1,5 @@
+
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -19,7 +21,7 @@ const itemSchema = new Schema({
         required: true
     },
     condition: {
-        type: Number,
+        type: String, 
         required: true
     },
     location: {

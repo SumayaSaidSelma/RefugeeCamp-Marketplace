@@ -6,7 +6,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
 header {
@@ -23,13 +22,7 @@ header .btn {
     border-radius: 5px;
 }
 
-
 header .btn:hover {
-    background-color: rgb(231, 59, 205);
-    color: white;
-}
-
-header .a:hover {
     background-color: rgb(231, 59, 205);
     color: white;
 }
@@ -48,51 +41,48 @@ main.item-page {
     align-items: center;
 }
 
-main.item-page .item-image img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 5px;
-}
-
-main.item-page h1 {
-    margin: 20px 0 10px;
-    text-align: center;
-}
-
-main.item-page p {
-    margin: 5px 0;
-    text-align: center;
-}
-
-.buttons {
+main.item-page form {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    margin: 30px 20px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.buttons .btn {
+main.item-page form div {
+    margin: 10px 0;
+    width: 80%;
+}
+
+main.item-page form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+main.item-page form input,
+main.item-page form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+main.item-page form textarea {
+    height: 100px;
+}
+
+main.item-page form button {
     background-color: rgb(111, 224, 237);
     color: black;
     padding: 15px 25px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.buttons .btn:hover {
+main.item-page form button:hover {
     background-color: rgb(231, 59, 205);
     color: white;
 }
-
-.a {
-    background-color: rgb(111, 224, 237);
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-

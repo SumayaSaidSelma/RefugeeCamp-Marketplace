@@ -18,8 +18,9 @@ const itemRoutes = require('./routes/items');
 app.use(express.static('public')); // Serve static files from 'public' directory
 app.use(express.json()); // Parse JSON bodies for POST requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies for POST requests
-app.use(methodOverride('_method')); // Use method-override middleware
 app.set('view engine', 'ejs'); // Set EJS as the view engine
+
+app.use(methodOverride('_method')); // Use method-override middleware
 
 
 // Connect to MongoDB using Mongoose

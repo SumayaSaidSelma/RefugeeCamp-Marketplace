@@ -51,7 +51,7 @@ footer {
 
 }
 
-footer .btn {
+button {
     background-color: rgb(111, 224, 237);
     color: black;
     padding: 10px 20px;
@@ -62,7 +62,7 @@ footer .btn {
     text-decoration: none;
 }
 
-footer .a {
+footer .a{
     background-color: rgb(111, 224, 237);
     color: black;
     padding: 10px 20px;
@@ -70,4 +70,14 @@ footer .a {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+}
+
+footer .btn{
+    background-color: rgb(111, 224, 237);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; 
 }

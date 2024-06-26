@@ -12,7 +12,7 @@
 
     <header>
         <a href="/items/new" class="btn post-item">Post a New Item</a>
-        <a href="/logout" class="btn logout">Log Out</a>
+        <a href="/" class="a goback" onclick="alert('Sorry cant go out yet!')">Back to Home</a>
     </header>
 
     <main class="item-page">
@@ -28,15 +28,21 @@
         <p>Condition: <%= item.condition %></p>
         <p>Location: <%= item.location %></p>
 
+
         <div class="buttons">
-            <button class="btn" onclick="alert('Not available')">Ask</button>
-            <button class="btn" onclick="alert('This feature is not available now')">Share Location</button>
-            <button class="btn buy" onclick="alert('You don\'t have money to buy anything, get a job')">Buy</button>
-            <a href="/" class="a goback" onclick="alert('Sorry cant go out yet!')">Back to Home</a>
+            <button class="btn" onclick="alert('Ask google! This teature is not available')">Ask</button>
+            <button class="btn" onclick="alert('Save your self! This feature is not available now')">Share Location</button>
+            <button class="btn buy" onclick="alert('You don\'t have money to buy anything, get a job!')">Buy</button>
+            <a href="/items/<%= item._id %>/edit" class="btn update">Update Item</a>            
+            
             <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
                 <button type="submit" class="btn delete">Delete</button>
             </form>
+            
         </div>
+
+
+        
         
     </main>
 </body>

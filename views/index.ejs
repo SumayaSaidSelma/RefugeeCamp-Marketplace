@@ -22,16 +22,17 @@
                     <img src="<%= item.image %>" alt="<%= item.name %>">
                     <h3><a href="/items/<%= item._id %>"><%= item.name %></a></h3>
                     <p>Price: $<%= item.price %></p>
+                    <p>Description: $<%= item.description %></p>
                     <p>Size: <%= item.size %></p>
                     <p>Condition: <%= item.condition %></p>
                     <p>Location: <%= item.location %></p>
                 </li>
             <% }) %>
         </ul>
-        
+ 
         <footer>
             <a href="/items/new" class="btn post-item">Post a New Item</a>
-            <a href="/logout" class="btn logout" onclick="alert('Sorry cant go out yet!')">Log Out</a>
+            <a href="/" class="btn logout" onclick="alert('Sorry we will miss you!')">Log Out</a>
         </footer>
 
 </body>
