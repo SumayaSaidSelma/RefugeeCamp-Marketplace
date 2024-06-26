@@ -5,7 +5,7 @@ const router = express.Router();
 const Item = require('../models/Item');
 
 // Get all items and render the index view
-router.get('/', async (req, res) => {
+router.get('/index', async (req, res) => {
     try {
         const items = await Item.find();
         res.render('index', { items });
@@ -20,7 +20,7 @@ router.get('/new', (req, res) => {
 });
 
 // Post a new item
-router.post('/', async (req, res) => {
+router.post('/item', async (req, res) => {
     try {
         const { name, description, image, price, location } = req.body;
         const item = new Item({ name, description, image, price, location });
@@ -34,16 +34,22 @@ router.post('/', async (req, res) => {
 // Get a specific item and render the item view
 router.get('/:id', async (req, res) => {
     try {
+        console.log('Item ID:', req.params.id); // Log the item ID
         const item = await Item.findById(req.params.id);
-        if (!item) return res.status(404).json({ message: 'Item not found' });
-        res.render('items', { item });
+        if (!item) {
+            console.log('Item not found'); // Log if item is not found
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        console.log('Item found:', item); // Log the found item
+        res.render('item', { item });
     } catch (err) {
+        console.error(err); // Log any errors
         res.status(500).json({ message: err.message });
     }
 });
 
 // Update an item
-router.put('/:id', async (req, res) => {
+router.put('/item', async (req, res) => {
     try {
         const { name, description, image, price, isAvailable } = req.body;
         const item = await Item.findByIdAndUpdate(req.params.id, { name, description, image, price, isAvailable }, { new: true });
@@ -66,4 +72,3 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
-

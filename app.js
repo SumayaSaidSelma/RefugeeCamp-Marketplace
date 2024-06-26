@@ -1,11 +1,13 @@
 
-// Load environment variables from .envy file
+// Load environment variables from .env file
 require('dotenv').config();
 
 
 // Require necessary modules
 const express = require('express');  // Importing the Express framework to create a server.
 const mongoose = require('mongoose'); //Importing Mongoose to interact with MongoDB.
+const methodOverride = require('method-override'); // Importing method-override to support DELETE requests
+
 
 const app = express();
 const userRoutes = require('./routes/users'); 
@@ -15,6 +17,7 @@ const itemRoutes = require('./routes/items');
 app.use(express.static('public')); // Serve static files from 'public' directory
 app.use(express.json()); // Parse JSON bodies for POST requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies for POST requests
+app.use(methodOverride('_method')); // Use method-override middleware
 app.set('view engine', 'ejs'); // Set EJS as the view engine
 
 

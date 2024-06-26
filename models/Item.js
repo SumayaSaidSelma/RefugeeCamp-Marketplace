@@ -14,6 +14,14 @@ const itemSchema = new Schema({
         type: Number,
         required: true
     },
+    size: {
+        type: Number,
+        required: true
+    },
+    condition: {
+        type: Number,
+        required: true
+    },
     location: {
         type: String,
         required: true

@@ -20,7 +20,7 @@
         <div class="item-image">
             <img src="<%= item.image %>" alt="<%= item.name %>">
         </div>
-        
+
         <h1><%= item.name %></h1>
         <p>Price: $<%= item.price %></p>
         <p>Description: <%= item.description %></p>
@@ -33,9 +33,11 @@
             <button class="btn" onclick="alert('This feature is not available now')">Share Location</button>
             <button class="btn buy" onclick="alert('You don\'t have money to buy anything, get a job')">Buy</button>
         </div>
-
+        
+        <div class="delete-button">
+            <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn delete">Delete</button>
     </main>
-
 </body>
 </html>
 

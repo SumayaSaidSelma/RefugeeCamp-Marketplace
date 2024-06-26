@@ -17,17 +17,14 @@
 
         <ul>
             <% items.forEach(item => { %>
-
-                <img src="<%= item.image %>" alt="<%= item.name %>">
-
+                
                 <li>
-                        <h3><a href="/items/<%= item._id %>"><%= item.name %></a></h3>
-                        <p>Price: $<%= item.price %></p>
-                        <p>description: <%= item.description %></p>
-                        <p>Size: <%= item.size %></p>
-                        <p>Condition: <%= item.condition %></p>
-                        <p>Location: <%= item.location %></p>
-                        
+                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                    <h3><a href="/items/<%= item._id %>"><%= item.name %></a></h3>
+                    <p>Price: $<%= item.price %></p>
+                    <p>Size: <%= item.size %></p>
+                    <p>Condition: <%= item.condition %></p>
+                    <p>Location: <%= item.location %></p>
                 </li>
             <% }) %>
         </ul>
