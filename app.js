@@ -1,12 +1,11 @@
 
 // Load environment variables from .envy file
-require('dotenv').config({ path: '.envy' });
+require('dotenv').config({ path: '.env' });
 
 
 // Require necessary modules
 const express = require('express');  // Importing the Express framework to create a server.
 const mongoose = require('mongoose'); //Importing Mongoose to interact with MongoDB.
-const dotenv = require('dotenv'); //Importing dotenv to manage environment variables.
 
 const app = express();
 const userRoutes = require('./routes/users'); 
@@ -31,6 +30,7 @@ app.use('/items', itemRoutes); // Route middleware for '/items' using itemRoutes
 
 // Define port
 const port = process.env.PORT || 3000;
+
 
 // Start the server
 app.listen(port, () => {
