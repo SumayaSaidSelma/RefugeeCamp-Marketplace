@@ -1,6 +1,6 @@
 
 // Load environment variables from .envy file
-require('dotenv').config({ path: '.env' });
+require('dotenv').config();
 
 
 // Require necessary modules
@@ -31,6 +31,10 @@ app.use('/items', itemRoutes); // Route middleware for '/items' using itemRoutes
 // Define port
 const port = process.env.PORT || 3000;
 
+
+app.get('/',(req, res) => {
+    res.redirect('/items');
+})
 
 // Start the server
 app.listen(port, () => {

@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+}
+
+header .btn {
+    background-color: white;
+    color: green;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .btn:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+main.item-page {
+    width: 80%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main.item-page .item-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+main.item-page h1 {
+    margin: 20px 0 10px;
+    text-align: center;
+}
+
+main.item-page p {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons .btn {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons .btn:hover {
+    background-color: darkgreen;
+}
+
+.buttons .buy {
+    align-self: flex-end;
+}
+

@@ -1,10 +1,7 @@
-
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-const itemSchema = new mongoose.Schema({
+const itemSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -26,9 +23,11 @@ const itemSchema = new mongoose.Schema({
         required: true
     },
     isAvailable: { 
-        type: Boolean, default: true 
+        type: Boolean, 
+        default: true 
     }
 });
 
 module.exports = mongoose.model('Item', itemSchema);
+
 

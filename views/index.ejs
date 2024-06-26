@@ -4,28 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RefugeeCamp Marketplace</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
 
 <body>
-    <h1>RefugeeCamp Marketplace</h1>
-    <h2>Available Items</h2>
 
-    <ul>
-        <% items.forEach(item => { %>
+    <header>
+        <h1>RefugeeCamp Marketplace</h1>
+    </header>
 
-            <li>
-                <h3><a href="/items/<%= item._id %>"><%= item.title %></a></h3>
-                <p><%= item.description %></p>
-                <p>Price: $<%= item.price %></p>
-            </li>
-            
-        <% }) %>
-    </ul>
+        <h2>Available Items</h2>
 
-    <a href="/items/new">Post a New Item</a>
+        <ul>
+            <% items.forEach(item => { %>
+
+                <img src="<%= item.image %>" alt="<%= item.name %>">
+
+                <li>
+                        <h3><a href="/items/<%= item._id %>"><%= item.name %></a></h3>
+                        <p>Price: $<%= item.price %></p>
+                        <p>description: <%= item.description %></p>
+                        <p>Size: <%= item.size %></p>
+                        <p>Condition: <%= item.condition %></p>
+                        <p>Location: <%= item.location %></p>
+                        
+                </li>
+            <% }) %>
+        </ul>
+        
+        <footer>
+            <a href="/items/new" class="btn post-item">Post a New Item</a>
+            <a href="/logout" class="btn logout" onclick="alert('Sorry cant go out yet!')">Log Out</a>
+        </footer>
 
 </body>
 
 </html>
-
