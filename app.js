@@ -19,7 +19,7 @@ app.set('view engine', 'ejs'); // Set EJS as the view engine
 
 
 // Connect to MongoDB using Mongoose
-const mongoURI = process.env.MONGODBURI;
+const mongoURI = process.env.MONGOURI;
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.error('MongoDB connection error:', err));
