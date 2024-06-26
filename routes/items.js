@@ -1,4 +1,5 @@
 // routes/items.js
+// http://localhost:3000/items
 
 const express = require('express');
 const router = express.Router();

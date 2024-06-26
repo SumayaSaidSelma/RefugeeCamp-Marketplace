@@ -32,11 +32,12 @@
             <button class="btn" onclick="alert('Not available')">Ask</button>
             <button class="btn" onclick="alert('This feature is not available now')">Share Location</button>
             <button class="btn buy" onclick="alert('You don\'t have money to buy anything, get a job')">Buy</button>
-        </div>
-        
-        <div class="delete-button">
+            <a href="/" class="a goback" onclick="alert('Sorry cant go out yet!')">Back to Home</a>
             <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
                 <button type="submit" class="btn delete">Delete</button>
+            </form>
+        </div>
+        
     </main>
 </body>
 </html>

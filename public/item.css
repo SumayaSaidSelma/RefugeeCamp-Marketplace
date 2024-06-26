@@ -1,47 +1,52 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 20px;
+    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px 20px;
-    background-color: green;
-    color: white;
 }
 
 header .btn {
-    background-color: white;
-    color: green;
+    background-color: rgb(111, 224, 237);
+    color: black;
     padding: 10px 20px;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
 }
 
+
 header .btn:hover {
-    background-color: darkgreen;
+    background-color: rgb(231, 59, 205);
     color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
 }
 
 main.item-page {
     width: 80%;
-    margin: 20px 0;
+    margin: 20px 20px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 main.item-page .item-image img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
+    border-radius: 5px;
 }
 
 main.item-page h1 {
@@ -57,24 +62,32 @@ main.item-page p {
 .buttons {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    justify-content: space-around;
+    margin: 30px 20px;
 }
 
 .buttons .btn {
-    background-color: green;
+    background-color: rgb(111, 224, 237);
+    color: black;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.buttons .btn:hover {
+    background-color: rgb(231, 59, 205);
     color: white;
+}
+
+.a {
+    background-color: rgb(111, 224, 237);
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.buttons .btn:hover {
-    background-color: darkgreen;
-}
-
-.buttons .buy {
-    align-self: flex-end;
-}
 

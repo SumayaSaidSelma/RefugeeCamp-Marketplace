@@ -81,6 +81,11 @@ footer .btn {
     cursor: pointer;
 }
 
+fotter .header .btn:hover {
+    background-color: rgb(231, 59, 205);
+    color: white;
+}
+
 
 
 
